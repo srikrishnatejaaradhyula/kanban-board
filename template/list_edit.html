@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,200;1,8..144,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            background: radial-gradient(circle at center, #9bfdcf , #85ffeb);
+
+            padding: 30px;
+            font-family: 'Roboto Serif', serif;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0;
+            padding-left: 1%;
+            padding-right: 5%;
+        }
+        .log{
+            font-size: 25px;
+            letter-spacing: 1px ;
+            color: #564a5f;
+            text-shadow: #bfbaff 1px 1px,#ffdef7 2px 2px;
+        }
+        nav ul li{
+            list-style-type: none;
+            display: inline-table;
+            padding: 0 100px;
+        }
+        nav ul li a{
+            color: #564a5f;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        nav ul li a:hover{
+            color: #b63e58;
+            transition: .4s;
+            font-weight: bolder;
+        }
+        .logout{
+            background-color: #b63e58;
+            color: #ffffff;
+            text-decoration: none;
+            border: 2px solid transparent;
+            font-weight: bold;
+            padding: 5px 25px;
+            border-radius: 30px;
+            transition: teansform .4s;
+
+        }
+        .logout:hover{
+            transform: scale(1.1);
+        }
+        .summary{
+            color: #0fa44a;
+            font-size: 25px;
+            font-weight: 600;
+            left: 700px;
+        }
+        div.card{
+            height: 300px;
+            width: 400px;
+            position: absolute;
+            top: 175px;
+            left: 450px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.263);
+            box-shadow: 0 8px 32px 0 rgba(8, 8, 8, 0.329);
+            border-left: 1px solid rgba(255, 255, 255, 0.24);
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+        }
+        input{
+            height: 40px;
+            width: 350px;
+            background-color: rgba(192, 176, 176, 0.557);
+            border: 10px;
+            border-color: #1a1212;
+            border-radius: 5px;
+            font-family: 'Roboto Serif', serif;
+        }
+        textarea{
+            height: 100px;
+            width: 350px;
+            background-color: rgba(192, 176, 176, 0.557);
+            border: 10px;
+            border-color: #1a1212;
+            border-radius: 5px;
+            font-family: 'Roboto Serif', serif;
+        }
+        .butt{
+            background-color: #11cc65;
+            box-shadow: #096630 4px 4px 0px;
+            border-radius: 8px;
+            transition: transform 200ms,box-shadw 200ms;
+            height: 35px;
+            width: 100px;
+            font-family: 'Roboto Serif', serif;
+            font-weight: 600;
+            font-size: 16px;
+
+        }
+        .butt:active {
+            transform: translateY(4px) translateX(4px);
+            box-shadow: #094c66 0px 0px 0px;
+        }
+        .lname{
+            position: absolute;
+            top: 75px;
+            left: 22px;
+        }
+        .ldescr{
+            position: absolute;
+            top: 125px;
+            left: 22px;
+        }
+        .lbutton{
+            position: absolute;
+            top: 250px;
+            left: 140px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <nav>
+            <h5 class="log">welcome {{users.name}} ,</h5>
+            <ul>
+                <li><a class="summary" href="/home">home </a></li>
+                <li>
+                    <a class="summary" href="/summary">summary </a>
+                </li>
+            </ul>
+            <form action="/logout">
+            <button type="submit" onclick=""  class="logout">Logout</a>
+            </form>
+        </nav>
+    </div>
+    <div class="card" style="max-width: 25rem;">
+        <h3>Add a List</h3>
+        <form method="post">
+            <div class="lname"><input type="text" class="l_name"  name="l_name" id="l_name"  value="{{lists.list_name}}"></div>
+            <div class="ldescr"><textarea class="l_desc"  name="l_desc" id="l_desc" placeholder="Description">{{ lists.description }}</textarea></div>
+            <div class="lbutton"><button class="butt" type="submit" >save</button> </div>
+        </form>
+    </div>
+</body>
+</html>

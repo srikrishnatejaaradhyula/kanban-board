@@ -1,0 +1,483 @@
+openapi: 3.0.3
+info:
+  title: Kanban board
+  description: |-
+    This is a Kanban board Server based on the OpenAPI 3.0 
+  version: 1.0.11
+servers:
+  - url: http://127.0.0.1:5000
+tags:
+- name: user
+- name: list
+- name: card
+paths:
+  /api/users/{username}:
+    get:
+      tags:
+      - user
+      description: get an existing user by username
+      parameters:
+        - in: path
+          name: username
+          description: username of  to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: users
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    put:
+      tags:
+        - user
+      description: get an existing user by username
+      parameters:
+        - in: path
+          name: username
+          description: username of  to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: users
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                  username:
+                    type: string
+                  password:
+                    type: string
+
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+       - user
+      description: get an existing user by username
+      parameters:
+        - in: path
+          name: username
+          description: username of  to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully Deleted.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+  /api/user:
+    post:
+      tags:
+        - user
+      description: add new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Successfully user created.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '409':
+          description: username alredy exit
+        '500':
+          description: internal server error   
+
+  /api/lists/{list_name}:
+    get:
+      tags:
+      - list
+      description: get an existing user by list
+      parameters:
+        - in: path
+          name: list_name
+          description: list_name of to return list 
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: lists
+                type: object
+                properties:
+                  list_id:
+                    type: integer
+                    example: 1
+                  list_name:
+                    type: string
+                  description:
+                    type: string
+                  user_id:
+                    type: integer
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    put:
+      tags:
+        - list
+      description: update an existing list name and description by list_name
+      parameters:
+        - in: path
+          name: list_name
+          description: list_name of to return list
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                list_name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: lists
+                type: object
+                properties:
+                  list_id:
+                    type: integer
+                  list_name:
+                    type: string
+                  description:
+                    type: string
+                  user_id:
+                    type: integer
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+       - list
+      description: delete an existing list by list_name
+      parameters:
+        - in: path
+          name: list_name
+          description: username of  to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully Deleted.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+  /api/lists:
+    post:
+      tags:
+        - list
+      description: add new list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                list_name:
+                  type: string
+                description:
+                  type: string
+                username:
+                  type: string
+      responses:
+        '201':
+          description: Successfully user created.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '409':
+          description: username alredy exit
+        '500':
+          description: internal server error  
+  /api/cards/{card_title}:
+    get:
+      tags:
+      - card
+      description: get an existing card by card_title
+      parameters:
+        - in: path
+          name: card_title
+          description: card_title of to return card 
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: lists
+                type: object
+                properties:
+                  card_id :
+                    type: integer
+                    example: 1
+                  card_title:
+                    type: string
+                  content:
+                    type: string
+                  deadline:
+                    type: string
+                    pattern: '^\d{4}-\d{2}-\d{2}$'
+                  is_complete:
+                    type: integer
+                  list_id:
+                    type: integer
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    put:
+      tags:
+        - card
+      description: update an existing card by card_title
+      parameters:
+        - in: path
+          name: card_title
+          description: card_title of to return card
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  card_title:
+                    type: string
+                  content:
+                    type: string
+                  deadline:
+                    type: string
+                    pattern: '^\d{4}-\d{2}-\d{2}$'
+                  is_complete:
+                    type: integer
+                  list_name:
+                    type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                title: lists
+                type: object
+                properties:
+                  card_id :
+                    type: integer
+                    example: 1
+                  card_title:
+                    type: string
+                  content:
+                    type: string
+                  deadline:
+                    type: string
+                    pattern: '^\d{4}-\d{2}-\d{2}$'
+                  is_complete:
+                    type: integer
+                  list_id:
+                    type: integer
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+    delete:
+      tags:
+       - card
+      description: delete an existing card by card_title
+      parameters:
+        - in: path
+          name: card_title
+          description: card_title of to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully Deleted.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '404':
+          description: user not found
+        '405':
+          description: Validation exception
+  /api/cards:
+    post:
+      tags:
+        - card
+      description: add new card
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  card_title:
+                    type: string
+                  content:
+                    type: string
+                  deadline:
+                    type: string
+                    pattern: '^\d{4}-\d{2}-\d{2}$'
+                  is_complete:
+                    type: integer
+                  list_name:
+                    type: string
+      responses:
+        '201':
+          description: Successfully user created.
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+        '409':
+          description: card_title alredy exit
+        '500':
+          description: internal server error                 

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,200;1,8..144,200&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body{
+            background: radial-gradient(circle at center, #9bfdcf , #85ffeb);
+            font-family: 'Roboto Serif', serif;
+        }
+        button{
+            background-color: #1197cc;
+            box-shadow: #094c66 4px 4px 0px;
+            border-radius: 8px;
+            transition: transform 200ms,box-shadw 200ms;
+            height: 50px;
+            width: 150px;
+            font-family: 'Roboto Serif', serif;
+            font-weight: 900;
+            font-size: x-large;
+        }
+        .text{
+            display: flex;
+            font-family: 'Roboto Serif', serif;
+            transform: skewY(0deg);
+            color: #564a5f;
+            text-shadow: #bfbaff 4px 4px,#ffdef7 8px 8px;
+            font-size: 100px;
+            font-weight: 900;
+            position: absolute;
+            top: 130px;
+            left: 225px;
+            animation: anut 4s 1;
+            align-content: center;
+        }
+        @keyframes anut {
+        from{
+            position: absolute;
+            top: 0px; 
+            }
+        }
+        .login{
+            position: absolute;
+            top:25px;
+            left: 120px;
+        }
+        .signup{
+            position: absolute;
+            top:25px;
+            left: 430px;
+        }
+        .box{
+            padding-bottom: 10px;
+            height: 100px;
+            width: 700px;
+            position: absolute;
+            top: 300px;
+            left: 325px;
+            align-items: center;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.082);
+            box-shadow: 0 8px 32px 0 rgba(8, 8, 8, 0.329);
+            border-left: 1px solid rgba(255, 255, 255, 0.24);
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+            animation: anu 4s 1;
+        }
+        @keyframes anu {
+            from{
+                position: absolute;
+                top: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Kanban Application</div>
+    <div class="box">
+        <div class="login">
+            <form action="/login">
+                <button type="submit" >Login</button>
+            </form>
+        </div>
+        <div class="signup">
+            <form action="/register">
+                <button type="submit">signup</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

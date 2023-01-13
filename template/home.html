@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,200;1,8..144,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <title>home</title>
+    <style>
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background:  #00a88c; 
+        border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+        background: #00c96b; 
+        }
+        body{
+            background: radial-gradient(circle at center, #9bfdcf , #85ffeb);
+            padding: 40px;
+            padding-top: 10px;
+            font-family: 'Roboto Serif', serif;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0;
+            padding-left: 1%;
+            padding-right: 5%;
+        }
+        .log{
+            font-size: 25px;
+            letter-spacing: 1px ;
+            color: #564a5f;
+            text-shadow: #bfbaff 1px 1px,#ffdef7 2px 2px;
+        }
+        nav ul li{
+            list-style-type: none;
+            display: inline-table;
+            padding: 0 130px;
+        }
+        nav ul li a{
+            color: #564a5f;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        nav ul li a:hover{
+            color: #b63e58;
+            transition: .4s;
+            font-weight: bolder;
+        }
+        .logout{
+            background-color: #b63e58;
+            color: #ffffff;
+            text-decoration: none;
+            border: 2px solid transparent;
+            font-weight: bold;
+            padding: 5px 25px;
+            border-radius: 30px;
+            transition: teansform .4s;
+        }
+        .logout:hover{
+            transform: scale(1.1);
+        }
+        div.card{
+            top:50px;
+            background-color: rgba(255, 255, 255, 0.263);
+            box-shadow: 0 8px 32px 0 rgba(8, 8, 8, 0.329);
+            border-left: 1px solid rgba(255, 255, 255, 0.24);
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 10px;
+            
+        }
+        .summary{
+            color: #095a29;
+            font-size: 25px;
+            font-weight: 600;
+            left: 700px;
+        }
+        .add{
+            height: 75px;
+            width: 75px;
+            border-radius: 50px;
+            font-size: 40px;
+            text-align: center;
+            background-color: #0fa44a;
+            font-weight: bolder;
+            color: #ffffff;
+            padding-bottom: 10px;
+            border: 0;
+        }
+        .btn{
+            height: 50px;
+            width: 260px;
+            
+        }
+        .btn-group{
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+        }
+        .butt{
+            border: 0px;
+            padding-top: 100px;
+            padding-left: 100px;
+        }
+        div.card-body .card{
+            top:20px;
+            
+            background-color: rgba(236, 175, 62, 0.263);
+            box-shadow: 0 8px 32px 0 rgba(8, 8, 8, 0.329);
+            border-left: 1px solid rgba(255, 255, 255, 0.24);
+            border-top: 1px solid rgba(255, 255, 255, 0.24);
+            
+        }
+        .butt1{
+            border: 0px;
+            padding-top: 25px;
+            padding-left: 130px;
+            padding-bottom: 20px;
+        }
+        .add1{
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            font-size: 25px;
+            text-align: center;
+            background-color: #0fa44a;
+            font-weight: bolder;
+            color: #ffffff;
+            border: 0;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+        div.scrollmenu {
+            overflow: auto;
+            white-space: nowrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <nav>
+            <h5 class="log">welcome {{users.name}} ,</h5>
+            <ul>
+                <li></li>
+                <li>
+                    <a class="summary" href="/summary">summary </a>
+                </li>
+            </ul>
+            <form action="/logout">
+            <button type="submit" onclick=""  class="logout">Logout</a>
+            </form>
+        </nav>
+    </div>
+    <div  >
+    <div class="card-deck " style="min-width:max-content; min-height: max-content; ">
+        {% for i in  range(lists|length) %}
+        
+        <div class="card " style="max-width: 320px;">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info" style="font-size: 25px;">{{ lists[i].list_name }}</button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="max-width: 50px;">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu" style="padding: 0;">                                        
+                        <a class="dropdown-item" style="background-color: #96d0ffea;  height: 40px; font-size:20px ;" href="/list_edit/{{lists[i].list_id}}">Edit</a>
+                        <a class="dropdown-item" style="background-color: #ff7b7bd5;  height: 40px; font-size:20px ;" href="/list_delete/{{lists[i].list_id}}">Delete</a>
+                    </div>
+                </div>
+            {% for j in range(cards|length) %}
+            {% if cards[j].list_id == lists[i].list_id %}
+            <div class="card-body" style=" padding-top: 0%; padding-bottom: 10%;">
+                    <div class="card"
+                    {% if cards[j].is_complete == 0 %}
+                        style="max-width: 280px; background-color: rgba(236, 77, 62, 0.300);"
+                    {% elif cards[j].is_complete == 25 %}
+                        style="max-width: 280px; background-color: rgba(236, 137, 62, 0.300);"
+                    {% elif cards[j].is_complete == 50 %}
+                        style="max-width: 280px; background-color: rgba(236, 207, 62, 0.300);"
+                    {% elif cards[j].is_complete == 75 %}
+                        style="max-width: 280px; background-color: rgba(190, 236, 62, 0.300);"
+                    {% elif cards[j].is_complete == 100 %}
+                        style="max-width: 280px; background-color: rgba(91, 236, 62, 0.300);"
+                    {% else %}
+                    style="max-width: 280px; height: 250px; padding: 20px;"
+                    {% endif %}
+                    >
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-info" style="font-size: 20px;">{{ cards[j].card_title }}</button>
+                            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="max-width: 50px;">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu" style="padding: 0;">
+                                <a class="dropdown-item" style="background-color: #96d0ffea;  height: 40px; font-size:20px ;" href="/card_edit/{{cards[j].card_id }}">Edit</a>
+                                <a class="dropdown-item" style="background-color: #ff7b7bd5;  height: 40px; font-size:20px ;" href="/card_delete/{{cards[j].card_id }}" >Delete</a>
+                            </div>
+                        </div>
+                        <div class="card-body" style="height: 150px; ">
+                            <div style="word-wrap: break-word;"><p class="card-text">{{ cards[j].content }}</p></div>
+                            <br>
+                            <p>deadline : {{ cards[j].deadline }}</p>
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="butt1">
+                <form action="/card">
+                <button type="submit" class="add1">+</button>
+                </form>
+            </div>
+        </div>
+    
+        {% endfor %}
+
+        <div class="butt">
+            <form action="/list">
+            <button type="submit" class="add">+</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
